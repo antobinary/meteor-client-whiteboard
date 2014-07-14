@@ -57,13 +57,14 @@ class @WhiteboardPaperModel
   # Can't do these things in initialize() because by then some elements
   # are not yet created in the page.
   create: ->
+    alert "create object"
     # paper is embedded within the div#slide of the page.
     @raphaelObj ?= ScaleRaphael(@container, "100%", "100%")
     @raphaelObj.canvas.setAttribute "preserveAspectRatio", "xMinYMin slice"
 
     @cursor = new WhiteboardCursorModel(@raphaelObj)
     @cursor.draw()
-    @cursor.on "cursor:mousewheel", _.bind(@_zoomSlide, @)
+    #@cursor.on "cursor:mousewheel", _.bind(@_zoomSlide, @)
 
     if @slides
       @rebuild()
@@ -78,6 +79,8 @@ class @WhiteboardPaperModel
       @borders[border] = @raphaelObj.rect(0, 0, 0, 0)
       @borders[border].attr("fill", "#ababab")
       @borders[border].attr( {stroke:"#ababab"} )
+
+    @raphaelObj
 
   # Re-add the images to the paper that are found
   # in the slides array (an object of urls and dimensions).

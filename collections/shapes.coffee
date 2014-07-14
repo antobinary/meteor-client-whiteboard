@@ -22,7 +22,7 @@ Meteor.methods
           "square": false
           "transparency": false
           "thickness": 88
-          "color": 0
+          "color": 5
         "meeting_id": "183f0bf3a0982a127bdb8161e0c44eb696b3e75c-1405019094496"
         "requester_id": "jmvjhcf6p8hj"
     "header":
