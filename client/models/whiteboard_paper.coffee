@@ -4,7 +4,7 @@ class @WhiteboardPaperModel
 
   # Container must be a DOM element
   constructor: (@container) ->
-    alert "paper in WhiteboardPaperModel =" + @container
+    console.log "paper in WhiteboardPaperModel =" + @container
     # a WhiteboardCursorModel
     @cursor = null
 
@@ -58,7 +58,7 @@ class @WhiteboardPaperModel
     alert "create object"
     # paper is embedded within the div#slide of the page.
     console.log ("@container=" + @container)
-    @raphaelObj ?= ScaleRaphael(@container, "100", "100")
+    @raphaelObj ?= ScaleRaphael(@container, "500", "500")
     @raphaelObj.canvas.setAttribute "preserveAspectRatio", "xMinYMin slice"
 
     @cursor = new WhiteboardCursorModel(@raphaelObj)
@@ -75,7 +75,6 @@ class @WhiteboardPaperModel
     # initializing border around slide to cover up areas which shouldnt show
     @borders = {}
     for border in ['left', 'right', 'top', 'bottom']
-      alert()
       @borders[border] = @raphaelObj.rect(0, 0, 0, 0)
       @borders[border].attr("fill", "#ababab")
       @borders[border].attr( {stroke:"#ababab"} )
@@ -390,6 +389,8 @@ class @WhiteboardPaperModel
       else
         console.log "shape not recognized at makeShape", shape
     if tool?
+      @currentShapes ?= @raphaelObj.set()
+      console.log "currentShapes:" + @currentShapes
       @currentShapes.push(tool)
       @currentShapesDefinitions.push(toolModel.getDefinition())
 

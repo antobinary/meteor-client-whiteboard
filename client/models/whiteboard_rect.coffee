@@ -25,7 +25,7 @@ class @WhiteboardRectModel extends WhiteboardToolModel
     thickness = startingData.thickness
 
     @obj = @paper.rect(x * @gw + @xOffset, y * @gh + @yOffset, 0, 0, 1)
-    @obj.attr Utils.strokeAndThickness(color, thickness)
+    @obj.attr Meteor.call("strokeAndThickness",color, thickness)
     @definition =
       shape: "rect"
       data: [x, y, 0, 0, @obj.attrs["stroke"], @obj.attrs["stroke-width"]]
@@ -43,6 +43,7 @@ class @WhiteboardRectModel extends WhiteboardToolModel
     y1 = startingData.points[1]
     x2 = startingData.points[2]
     y2 = startingData.points[3]
+    console.log "updating rect points:" + x1, x2, y1, y2
     square = startingData.square
     if @obj?
       [x1, x2] = [x2, x1] if x2 < x1
@@ -95,7 +96,7 @@ class @WhiteboardRectModel extends WhiteboardToolModel
     x = x1 * @gw
     y = y1 * @gh
     r = @paper.rect(x + @xOffset, y + @yOffset, (x2 * @gw) - x, (y2 * @gh) - y, 1)
-    r.attr Utils.strokeAndThickness(colour, thickness)
+    r.attr Meteor.call("strokeAndThickness", colour, thickness)
     r
 
   # Creating a rectangle has started
