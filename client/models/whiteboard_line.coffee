@@ -7,7 +7,7 @@ MAX_PATHS_IN_SEQUENCE = 30
 #       WhiteboardLineModel for the line tool
 class @WhiteboardLineModel extends WhiteboardToolModel
 
-  initialize: (@paper) ->
+  constructor: (@paper) ->
     super @paper
 
     # the defintion of this shape, kept so we can redraw the shape whenever needed

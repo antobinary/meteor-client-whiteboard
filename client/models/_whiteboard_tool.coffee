@@ -2,7 +2,7 @@
 class @WhiteboardToolModel
 
   initialize: (@paper) ->
-    alert "paper:" + @paper
+    console.log "paper:" + @paper
     @gh = 0
     @gw = 0
     @obj = 0

@@ -1,11 +1,11 @@
 # The cursor/pointer in the whiteboard
 class @WhiteboardCursorModel
 
-  constructor: (paper, radius=null, color=null) ->
-    @radius = radius or 3
-    @color = color or "#ff6666" # a pinkish red
+  constructor: (@paper, @radius=null, @color=null) ->
+    @radius ?= 3
+    @color ?= "#ff6666" # a pinkish red
     @cursor = null
-    @paper = paper
+    @paper
 
   draw: () =>
     @cursor = @paper.circle(0, 0, @radius)

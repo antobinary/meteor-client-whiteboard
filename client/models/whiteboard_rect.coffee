@@ -1,15 +1,13 @@
 # A rectangle in the whiteboard
 class @WhiteboardRectModel extends WhiteboardToolModel
-  @myPaper
-
-  initialize: (@paper) ->
+  constructor: (@paper) ->
     super @paper
-    #console.log "@paper in WhiteboardRectModel=" + @paper
+    console.log "@paper in WhiteboardRectModel=" + @paper
 
     # the defintion of this shape, kept so we can redraw the shape whenever needed
     # format: x1, y1, x2, y2, stroke color, thickness
     @definition = [0, 0, 0, 0, "#000", "0px"]
-    @myPaper = @paper
+    @paper
 
   # Creates a rectangle in the paper
   # @param  {number} x         the x value of the top left corner
@@ -17,7 +15,8 @@ class @WhiteboardRectModel extends WhiteboardToolModel
   # @param  {string} colour    the colour of the object
   # @param  {number} thickness the thickness of the object's line(s)
   make: (startingData) =>
-    console.log "@paper in make in WhiteboardRectModel=" + @myPaper
+    console.log "MAKING RECT"
+    console.log "@paper in make in WhiteboardRectModel=" + @paper
     console.log "make startingData"+ JSON.stringify startingData
 
     x = startingData.points[0]
@@ -39,6 +38,7 @@ class @WhiteboardRectModel extends WhiteboardToolModel
   # @param  {number} y2 the y value of the bottom right corner
   # @param  {boolean} square (draw a square or not)
   update: (startingData) -> 
+    console.log "UPDATING RECT"
     x1 = startingData.points[0]
     y1 = startingData.points[1]
     x2 = startingData.points[2]

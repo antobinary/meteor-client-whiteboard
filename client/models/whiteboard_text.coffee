@@ -1,7 +1,7 @@
 # A text in the whiteboard
 class @WhiteboardTextModel extends WhiteboardToolModel
 
-  initialize: (@paper) ->
+  constructor: (@paper) ->
     super @paper
 
     # the defintion of this shape, kept so we can redraw the shape whenever needed

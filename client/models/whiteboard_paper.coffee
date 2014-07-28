@@ -1,8 +1,6 @@
 # "Paper" which is the Raphael term for the entire SVG object on the webpage.
 # This class deals with this SVG component only.
 class @WhiteboardPaperModel
-  jaja: () ->
-    alert("jaja")
 
   # Container must be a DOM element
   constructor: (@container) ->
@@ -59,7 +57,8 @@ class @WhiteboardPaperModel
   create: ->
     alert "create object"
     # paper is embedded within the div#slide of the page.
-    @raphaelObj ?= ScaleRaphael(@container, "100%", "100%")
+    console.log ("@container=" + @container)
+    @raphaelObj ?= ScaleRaphael(@container, "100", "100")
     @raphaelObj.canvas.setAttribute "preserveAspectRatio", "xMinYMin slice"
 
     @cursor = new WhiteboardCursorModel(@raphaelObj)
@@ -76,6 +75,7 @@ class @WhiteboardPaperModel
     # initializing border around slide to cover up areas which shouldnt show
     @borders = {}
     for border in ['left', 'right', 'top', 'bottom']
+      alert()
       @borders[border] = @raphaelObj.rect(0, 0, 0, 0)
       @borders[border].attr("fill", "#ababab")
       @borders[border].attr( {stroke:"#ababab"} )

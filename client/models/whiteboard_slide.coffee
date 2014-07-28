@@ -2,7 +2,7 @@
 class @WhiteboardSlideModel
 
   # TODO: check if we really need original and display width and heights separate or if they can be the same
-  initialize: (@id, @url, @img, @originalWidth, @originalHeight, @displayWidth, @displayHeight, @xOffset=0, @yOffset=0) ->
+  constructor: (@id, @url, @img, @originalWidth, @originalHeight, @displayWidth, @displayHeight, @xOffset=0, @yOffset=0) ->
 
   getWidth: -> @displayWidth
 
