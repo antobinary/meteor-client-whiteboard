@@ -6,6 +6,7 @@ Template.whiteboard.events
     alert "drawShapes"
     wpm = new WhiteboardPaperModel('whiteboard-paper')
     wpm.create()
+    wpm._displayPage("someSampleData")
     # paper = new Raphael(document.getElementById('whiteboard-paper'), 500, 500);
     # circle = paper.circle(100, 100, 80);
 

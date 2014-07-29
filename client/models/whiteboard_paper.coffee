@@ -160,7 +160,7 @@ class @WhiteboardPaperModel
     $(@container).on "mousemove", _.bind(@_onMouseMove, @)
     $(@container).on "mousewheel", _.bind(@_zoomSlide, @)
     # TODO $(img.node).bind "mousewheel", zoomSlide
-    @trigger('paper:image:added', img)
+    #@trigger('paper:image:added', img)
 
     # TODO: other places might also required an update in these dimensions
     @_updateContainerDimensions()
@@ -816,3 +816,12 @@ class @WhiteboardPaperModel
       url
     else
       globals.presentationServer + url
+
+  #Changes the currently displayed page/slide (if any) with this one
+  #@param {data} message object containing the "presentation" object
+  _displayPage: (data) ->
+    @removeAllImagesFromPaper()
+    page = data?.payload?.currentPage
+    pngSlide = "http://www.tux.org/pub/sites/ftp.gnome.org/GNOME/teams/art.gnome.org/backgrounds/ABSTRACT-BlueRidge_1280x1024.png"
+    #@addImageToPaper(page.png_uri, 400, 400) # TODO the dimensions should be modified
+    @addImageToPaper(pngSlide, 400, 400) # TODO the dimensions should be modified
